@@ -13,7 +13,7 @@ var app = express();
 
 app.get('/', function(req, res) {
     
-    res.send( { ipaddress: req.connection.remoteAddress,
+    res.send( { ipaddress: req.headers['x-forwarded-for'],
                 language: req.headers["accept-language"].match(/[^;,]*/)[0],
                 software: req.headers['user-agent'].match(/\((.*?)\)/)[1]
             });
